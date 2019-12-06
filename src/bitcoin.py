@@ -6,8 +6,19 @@ import pandas as pd
 import time
 import os
 
-bitcoin_api_url = "https://api.coinmarketcap.com/v1/ticker/bitcoin/"
+base_api_url = 'https://api.coinmarketcap.com/v1/ticker/'
+
+bitcoin_api_url = base_api_url + "bitcoin" + '/'
+
+
+list_of_alts = ['ethereum', 'litecoin', 'dodgecoin']
+alt_urls = []
+for alt in list_of_alts:
+    alt_urls += base_api_url + alt + '/'
+
 w = csv.writer(open('records.csv', 'a'))
+
+
 
 def speak_btc(price, previous_price):
     price = float(price)//1
